@@ -15,4 +15,9 @@ setuptools.setup(name='getmetric',
                  packages=['getmetric'],
                  zip_safe=False,
                  keywords='getmetric package',
-                 classifiers=['Packages', 'Metrics'])
+                 classifiers=[
+                     "Programming Language :: Python :: 2",
+                     "Programming Language :: Python :: 3",
+                     "License :: OSI Approved :: MIT License",
+                     "Operating System :: OS Independent",
+                 ])
