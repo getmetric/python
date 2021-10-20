@@ -2,7 +2,7 @@ import setuptools
 
 
 setuptools.setup(name='getmetric',
-                 version='1.0.0',
+                 version='1.0.1',
                  description='Getmetric python package',
                  long_description=open('README.md').read().strip(),
                  long_description_content_type="text/markdown",
