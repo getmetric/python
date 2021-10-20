@@ -1,1 +1,1 @@
-from getmetric import getmetric
+from getmetric.getmetric import Getmetric
