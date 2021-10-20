@@ -260,4 +260,4 @@ def test_write(code):
 
 
 if __name__ == '__main__':
-    test_write("BD6aRuuLA4SEFZ8dCfkAmXn6gAHeeHfrMWJ")  # BD6aRuuLA4SEFZ8dCfkAmXn6gAHeeHfrMWJ")
+    test_write("")
