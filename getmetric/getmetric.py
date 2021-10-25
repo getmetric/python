@@ -20,6 +20,7 @@ class Getmetric:
         self.__per_sec_queue_mutex = Lock()
         self.__per_sec_map = {}
         self.__send_debug = send_debug
+        self.__last_send_error = ""
         if async_dump:
             self.__thread = Thread(target=self.__sending_thread)
             self.__thread.start()
@@ -178,12 +179,20 @@ class Getmetric:
             self.__sent_count += len(js_arr)
             return True
 
-        x = requests.post(self.__batch_url, json=js_arr, timeout=3)
-        if x.status_code == 200:
-            self.__sent_count += len(js_arr)
-            return True
+        try:
+            x = requests.post(self.__batch_url, json=js_arr, timeout=3)
+            if x.status_code == 200:
+                self.__sent_count += len(js_arr)
+                self.__last_send_error = ""
+                return True
+            self.__last_send_error = "server responded with bad status " + str(x.status_code)
+        except requests.exceptions.RequestException as e:
+            self.__last_send_error = str(e)
 
         return False
+
+    def get_last_sent_error(self):
+        return self.__last_send_error
 
     def send(self):
         while True:
